@@ -1,0 +1,12 @@
+#!/bin/sh
+
+DIRNAME=$(dirname "$0")
+MAVEN_WRAPPER_JAR=$DIRNAME/.mvn/wrapper/maven-wrapper.jar
+
+# Automatically download Maven if not found
+if [ ! -f "$MAVEN_WRAPPER_JAR" ]; then
+  echo "Maven wrapper not found, downloading Maven..."
+  curl -SL https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.8.4/maven-wrapper-3.8.4.jar -o $MAVEN_WRAPPER_JAR
+fi
+
+java -Dmaven.multiModuleProjectDirectory="$DIRNAME" -cp "$MAVEN_WRAPPER_JAR" org.apache.maven.wrapper.MavenWrapperMain "$@"

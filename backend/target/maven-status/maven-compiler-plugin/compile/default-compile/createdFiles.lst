@@ -1,0 +1,9 @@
+com\sagri\licenca\repository\EstoqueRepository.class
+com\sagri\licenca\repository\LicencaRepository.class
+com\sagri\licenca\controller\ProdutoController.class
+com\sagri\licenca\service\PessoaService.class
+com\sagri\licenca\service\LicencaService.class
+com\sagri\licenca\model\Pessoa.class
+com\sagri\licenca\model\Estoque.class
+com\sagri\licenca\repository\PessoaRepository.class
+com\sagri\licenca\model\Licenca.class
