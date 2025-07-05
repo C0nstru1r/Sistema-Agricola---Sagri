@@ -1,18 +1,18 @@
 package com.sagri.licenca.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Unidade {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
-    private String descricao;
-    private Integer quantidadePorUnidade;
 
-    // Getters and setters
+    private String nome;
+
+    // Getters e Setters
+
     public Long getId() {
         return id;
     }
@@ -27,21 +27,5 @@ public class Unidade {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public Integer getQuantidadePorUnidade() {
-        return quantidadePorUnidade;
-    }
-
-    public void setQuantidadePorUnidade(Integer quantidadePorUnidade) {
-        this.quantidadePorUnidade = quantidadePorUnidade;
     }
 }

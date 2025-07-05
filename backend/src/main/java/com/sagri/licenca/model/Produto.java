@@ -1,20 +1,23 @@
 package com.sagri.licenca.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Produto {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
-    private String codigoBarras;
-    private Double precoVenda;
-    private Double precoCusto;
-    private Integer quantidadeEmEstoque;
 
-    // Getters and setters
+    private String nome;
+    private String descricao;
+
+    @ManyToOne
+    @JoinColumn(name = "unidade_id")
+    private Unidade unidade;
+
+    // Getters e Setters
+
     public Long getId() {
         return id;
     }
@@ -31,35 +34,19 @@ public class Produto {
         this.nome = nome;
     }
 
-    public String getCodigoBarras() {
-        return codigoBarras;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setCodigoBarras(String codigoBarras) {
-        this.codigoBarras = codigoBarras;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public Double getPrecoVenda() {
-        return precoVenda;
+    public Unidade getUnidade() {
+        return unidade;
     }
 
-    public void setPrecoVenda(Double precoVenda) {
-        this.precoVenda = precoVenda;
-    }
-
-    public Double getPrecoCusto() {
-        return precoCusto;
-    }
-
-    public void setPrecoCusto(Double precoCusto) {
-        this.precoCusto = precoCusto;
-    }
-
-    public Integer getQuantidadeEmEstoque() {
-        return quantidadeEmEstoque;
-    }
-
-    public void setQuantidadeEmEstoque(Integer quantidadeEmEstoque) {
-        this.quantidadeEmEstoque = quantidadeEmEstoque;
+    public void setUnidade(Unidade unidade) {
+        this.unidade = unidade;
     }
 }
