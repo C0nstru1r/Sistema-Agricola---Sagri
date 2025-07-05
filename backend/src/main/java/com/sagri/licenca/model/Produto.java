@@ -2,6 +2,8 @@ package com.sagri.licenca.model;
 
 import javax.persistence.*;
 
+import jakarta.persistence.Id;
+
 @Entity
 public class Produto {
 
