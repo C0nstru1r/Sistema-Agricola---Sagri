@@ -1,25 +1,25 @@
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\repository\ProdutoRepository.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\model\Empresa.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\model\Preco.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\model\Estoque.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\controller\LicencaController.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\model\Pessoa.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\repository\UnidadeRepository.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\repository\EmpresaRepository.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\repository\EstoqueRepository.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\service\UnidadeService.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\controller\PessoaController.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\controller\EmpresaController.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\repository\PrecoRepository.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\model\Produto.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\service\ProdutoService.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\service\PessoaService.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\controller\UnidadeController.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\model\Licenca.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\controller\ProdutoController.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\repository\PessoaRepository.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\repository\LicencaRepository.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\service\LicencaService.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\model\Unidade.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\service\EmpresaService.java
-D:\Sagri_2.0\Sagri_2.0\backend\src\main\java\com\sagri\licenca\SagriLicencaApplication.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\repository\EstoqueRepository.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\controller\EmpresaController.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\service\ProdutoService.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\controller\ProdutoController.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\model\Produto.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\service\PessoaService.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\repository\PessoaRepository.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\repository\LicencaRepository.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\model\Unidade.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\service\LicencaService.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\model\Licenca.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\controller\UnidadeController.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\repository\ProdutoRepository.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\model\Estoque.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\service\EmpresaService.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\repository\EmpresaRepository.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\repository\PrecoRepository.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\model\Empresa.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\SagriLicencaApplication.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\model\Pessoa.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\model\Preco.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\repository\UnidadeRepository.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\controller\LicencaController.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\service\UnidadeService.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\controller\PessoaController.java
