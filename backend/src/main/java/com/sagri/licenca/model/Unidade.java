@@ -1,6 +1,9 @@
 package com.sagri.licenca.model;
 
-import javax.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Unidade {
@@ -27,5 +30,15 @@ public class Unidade {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public Object getDescricao() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getDescricao'");
+    }
+
+    public void setDescricao(Object descricao) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setDescricao'");
     }
 }
