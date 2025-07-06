@@ -1,9 +1,8 @@
 package com.sagri.licenca.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Unidade {
@@ -12,7 +11,14 @@ public class Unidade {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "O nome da unidade é obrigatório")
+    @Size(max = 100, message = "O nome deve ter no máximo 100 caracteres")
+    @Column(nullable = false, length = 100)
     private String nome;
+
+    @Size(max = 255, message = "A descrição deve ter no máximo 255 caracteres")
+    @Column(length = 255)
+    private String descricao;
 
     // Getters e Setters
 
@@ -32,13 +38,11 @@ public class Unidade {
         this.nome = nome;
     }
 
-    public Object getDescricao() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getDescricao'");
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescricao(Object descricao) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setDescricao'");
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }

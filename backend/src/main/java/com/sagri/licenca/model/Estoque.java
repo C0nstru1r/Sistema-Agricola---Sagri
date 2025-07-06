@@ -1,47 +1,24 @@
 package com.sagri.licenca.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 public class Estoque {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Min(0)
     private Integer quantidadeAtual;
+
+    @Min(0)
     private Integer quantidadeMinima;
+
+    @Min(0)
     private Integer quantidadeMaxima;
 
-    // Getters and setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Integer getQuantidadeAtual() {
-        return quantidadeAtual;
-    }
-
-    public void setQuantidadeAtual(Integer quantidadeAtual) {
-        this.quantidadeAtual = quantidadeAtual;
-    }
-
-    public Integer getQuantidadeMinima() {
-        return quantidadeMinima;
-    }
-
-    public void setQuantidadeMinima(Integer quantidadeMinima) {
-        this.quantidadeMinima = quantidadeMinima;
-    }
-
-    public Integer getQuantidadeMaxima() {
-        return quantidadeMaxima;
-    }
-
-    public void setQuantidadeMaxima(Integer quantidadeMaxima) {
-        this.quantidadeMaxima = quantidadeMaxima;
-    }
+    // Getters e Setters
+    // ... (os mesmos que você já tem)
 }

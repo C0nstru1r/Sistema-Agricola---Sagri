@@ -1,11 +1,8 @@
 package com.sagri.licenca.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Produto {
@@ -14,11 +11,17 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "O nome do produto é obrigatório")
+    @Size(max = 100, message = "O nome deve ter no máximo 100 caracteres")
+    @Column(nullable = false, length = 100)
     private String nome;
+
+    @Size(max = 255, message = "A descrição deve ter no máximo 255 caracteres")
+    @Column(length = 255)
     private String descricao;
 
-    @ManyToOne
-    @JoinColumn(name = "unidade_id")
+    @ManyToOne(optional = false) // Produto deve estar ligado a uma unidade
+    @JoinColumn(name = "unidade_id", nullable = false)
     private Unidade unidade;
 
     // Getters e Setters

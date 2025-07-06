@@ -1,65 +1,52 @@
 package com.sagri.licenca.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 public class Empresa {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank
+    @Size(max = 100)
+    @Column(nullable = false, length = 100)
     private String nome;
+
+    @NotBlank
+    @Pattern(regexp = "\\d{14}", message = "O CNPJ deve conter 14 dígitos numéricos")
+    @Column(nullable = false, unique = true, length = 14)
     private String cnpj;
+
+    @Size(max = 255)
     private String endereco;
+
+    @Size(max = 100)
     private String cidade;
+
+    @Size(max = 2, message = "Informe a sigla do estado (ex: SP, MG)")
     private String estado;
 
-    // Getters and setters
+    @Version
+    private Long versao;
+
+    // Getters e Setters...
+
+    public Long getVersao() {
+        return versao;
+    }
+
+    public void setVersao(Long versao) {
+        this.versao = versao;
+    }
+
     public Long getId() {
-        return id;
-    }
+    return id;
+}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+public void setId(Long id) {
+    this.id = id;
+}
 }

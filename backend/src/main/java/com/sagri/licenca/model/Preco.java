@@ -1,19 +1,28 @@
 package com.sagri.licenca.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "precos")
 public class Preco {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private Double precoCusto;
     private Double precoVenda;
     private Double markup;
-    private String dataAlteracao;
 
-    // Getters and setters
+    @LastModifiedDate
+    @Column(name = "data_alteracao", nullable = false)
+    private LocalDateTime dataAlteracao;
+
+    // Getters e setters
+
     public Long getId() {
         return id;
     }
@@ -46,11 +55,11 @@ public class Preco {
         this.markup = markup;
     }
 
-    public String getDataAlteracao() {
+    public LocalDateTime getDataAlteracao() {
         return dataAlteracao;
     }
 
-    public void setDataAlteracao(String dataAlteracao) {
+    public void setDataAlteracao(LocalDateTime dataAlteracao) {
         this.dataAlteracao = dataAlteracao;
     }
 }
