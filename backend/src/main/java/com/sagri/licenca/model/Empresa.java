@@ -2,8 +2,10 @@ package com.sagri.licenca.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.Data;
 
 @Entity
+@Data
 public class Empresa {
 
     @Id
@@ -31,22 +33,4 @@ public class Empresa {
 
     @Version
     private Long versao;
-
-    // Getters e Setters...
-
-    public Long getVersao() {
-        return versao;
-    }
-
-    public void setVersao(Long versao) {
-        this.versao = versao;
-    }
-
-    public Long getId() {
-    return id;
-}
-
-public void setId(Long id) {
-    this.id = id;
-}
 }
