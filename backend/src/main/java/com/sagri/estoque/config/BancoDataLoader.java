@@ -1,7 +1,7 @@
-package com.sagri.licenca.config;
+package com.sagri.estoque.config;
 
-import com.sagri.licenca.model.Banco;
-import com.sagri.licenca.repository.BancoRepository;
+import com.sagri.estoque.model.Banco;
+import com.sagri.estoque.repository.BancoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.io.ClassPathResource;

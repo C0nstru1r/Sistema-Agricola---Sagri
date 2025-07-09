@@ -1,4 +1,4 @@
-package com.sagri.licenca.model;
+package com.sagri.estoque.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;

@@ -1,7 +1,7 @@
-package com.sagri.licenca.controller;
+package com.sagri.estoque.controller;
 
-import com.sagri.licenca.model.AgenciaConta;
-import com.sagri.licenca.service.AgenciaContaService;
+import com.sagri.estoque.model.AgenciaConta;
+import com.sagri.estoque.service.AgenciaContaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

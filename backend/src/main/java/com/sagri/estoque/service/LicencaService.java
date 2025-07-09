@@ -1,13 +1,11 @@
+package com.sagri.estoque.service;
 
-package com.sagri.licenca.service;
-
-import com.sagri.licenca.model.Licenca;
-import com.sagri.licenca.repository.LicencaRepository;
+import com.sagri.estoque.model.Licenca;
+import com.sagri.estoque.repository.LicencaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class LicencaService {
@@ -15,19 +13,27 @@ public class LicencaService {
     @Autowired
     private LicencaRepository licencaRepository;
 
-    public Licenca saveLicenca(Licenca licenca) {
+    public Licenca save(Licenca licenca) {
         return licencaRepository.save(licenca);
     }
 
-    public List<Licenca> getAllLicencas() {
+    public Licenca getById(Long id) {
+        return licencaRepository.findById(id).orElse(null);
+    }
+
+    public List<Licenca> getAll() {
         return licencaRepository.findAll();
     }
 
-    public Optional<Licenca> getLicencaById(Long id) {
-        return licencaRepository.findById(id);
+    public Licenca update(Long id, Licenca licenca) {
+        if (licencaRepository.existsById(id)) {
+            licenca.setId(id);
+            return licencaRepository.save(licenca);
+        }
+        return null;
     }
 
-    public void deleteLicenca(Long id) {
+    public void delete(Long id) {
         licencaRepository.deleteById(id);
     }
 }

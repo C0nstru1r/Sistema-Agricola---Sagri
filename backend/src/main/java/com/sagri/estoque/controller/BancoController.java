@@ -1,7 +1,7 @@
-package com.sagri.licenca.controller;
+package com.sagri.estoque.controller;
 
-import com.sagri.licenca.model.Banco;
-import com.sagri.licenca.service.BancoService;
+import com.sagri.estoque.model.Banco;
+import com.sagri.estoque.service.BancoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +26,7 @@ public class BancoController {
     }
 
     @GetMapping("/{id}")
-    public Banco buscarPorId(@PathVariable Long id) {
+    public Banco buscar(@PathVariable Long id) {
         return bancoService.getById(id);
     }
 

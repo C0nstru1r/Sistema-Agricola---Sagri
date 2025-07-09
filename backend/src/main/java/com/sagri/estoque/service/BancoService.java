@@ -1,8 +1,7 @@
-package com.sagri.licenca.service;
+package com.sagri.estoque.service;
 
-import com.sagri.licenca.model.Banco;
-import com.sagri.licenca.repository.BancoRepository;
-import jakarta.persistence.EntityNotFoundException;
+import com.sagri.estoque.model.Banco;
+import com.sagri.estoque.repository.BancoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,29 +17,23 @@ public class BancoService {
         return bancoRepository.save(banco);
     }
 
-    public Banco update(Long id, Banco bancoAtualizado) {
-        return bancoRepository.findById(id).map(bancoExistente -> {
-            if (bancoExistente.isSistema()) {
-                throw new RuntimeException("Este banco é do sistema e não pode ser alterado.");
-            }
-            bancoAtualizado.setId(id);
-            return bancoRepository.save(bancoAtualizado);
-        }).orElseThrow(() -> new EntityNotFoundException("Banco não encontrado com ID: " + id));
-    }
-
-    public void delete(Long id) {
-        Banco banco = bancoRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Banco não encontrado"));
-        if (banco.isSistema()) {
-            throw new RuntimeException("Este banco é do sistema e não pode ser excluído.");
-        }
-        bancoRepository.deleteById(id);
+    public Banco getById(Long id) {
+        return bancoRepository.findById(id).orElse(null);
     }
 
     public List<Banco> getAll() {
         return bancoRepository.findAll();
     }
 
-    public Banco getById(Long id) {
-        return bancoRepository.findById(id).orElse(null);
+    public Banco update(Long id, Banco banco) {
+        if (bancoRepository.existsById(id)) {
+            banco.setId(id);
+            return bancoRepository.save(banco);
+        }
+        return null;
+    }
+
+    public void delete(Long id) {
+        bancoRepository.deleteById(id);
     }
 }

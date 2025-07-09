@@ -1,40 +1,42 @@
-package com.sagri.licenca.controller;
+package com.sagri.estoque.controller;
 
-import com.sagri.licenca.model.Licenca;
-import com.sagri.licenca.repository.LicencaRepository;
+import com.sagri.estoque.model.Licenca;
+import com.sagri.estoque.service.LicencaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Service
+@RestController
+@RequestMapping("/api/licencas")
+@CrossOrigin("*")
 public class LicencaController {
 
     @Autowired
-    private LicencaRepository licencaRepository;
+    private LicencaService licencaService;
 
-    public Licenca saveLicenca(Licenca licenca) {
-        return licencaRepository.save(licenca);
+    @PostMapping
+    public Licenca criar(@RequestBody Licenca licenca) {
+        return licencaService.save(licenca);
     }
 
-    public List<Licenca> getAllLicencas() {
-        return licencaRepository.findAll();
+    @GetMapping
+    public List<Licenca> listar() {
+        return licencaService.getAll();
     }
 
-    public Licenca getLicenca(Long id) {
-        return licencaRepository.findById(id).orElse(null);
+    @GetMapping("/{id}")
+    public Licenca buscar(@PathVariable Long id) {
+        return licencaService.getById(id);
     }
 
-    public Licenca updateLicenca(Long id, Licenca licenca) {
-        if (licencaRepository.existsById(id)) {
-            licenca.setId(id);
-            return licencaRepository.save(licenca);
-        } else {
-            return null;
-        }
+    @PutMapping("/{id}")
+    public Licenca atualizar(@PathVariable Long id, @RequestBody Licenca licenca) {
+        return licencaService.update(id, licenca);
     }
 
-    public void deleteLicenca(Long id) {
-        licencaRepository.deleteById(id);
+    @DeleteMapping("/{id}")
+    public void excluir(@PathVariable Long id) {
+        licencaService.delete(id);
     }
 }
