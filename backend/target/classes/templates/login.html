@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login - Sagri</title>
+</head>
+<body>
+    <h1>Bem-vindo ao Sagri</h1>
+    
+    <form action="/login" method="post">
+        <label>Nome:</label><br>
+        <input type="text" name="nome"><br>
+        <label>Senha:</label><br>
+        <input type="password" name="senha"><br><br>
+        <button type="submit">Entrar</button>
+    </form>
+
+    <p th:if="${erro}" th:text="${erro}" style="color:red;"></p>
+</body>
+</html>

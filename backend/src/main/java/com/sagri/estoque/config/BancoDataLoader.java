@@ -19,28 +19,47 @@ public class BancoDataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        if (bancoRepository.count() == 0) {
-            ClassPathResource resource = new ClassPathResource("bancos/Bancos Associados.csv");
-            try (BufferedReader reader = new BufferedReader(new InputStreamReader(resource.getInputStream(), StandardCharsets.UTF_8))) {
-                String linha;
-                boolean primeiraLinha = true;
-                while ((linha = reader.readLine()) != null) {
-                    if (primeiraLinha) {
-                        primeiraLinha = false; // Ignora o cabeçalho
-                        continue;
-                    }
+        // Verifica se já existem bancos cadastrados
+        if (bancoRepository.count() > 0) {
+            return;
+        }
 
-                    String[] campos = linha.split(";", -1);
-                    if (campos.length >= 2) {
-                        Banco banco = new Banco();
-                        banco.setCodigoBanco(Integer.parseInt(campos[0].trim()));
-                        banco.setNome(campos[1].trim());
-                        banco.setSistema(true);
+        ClassPathResource resource = new ClassPathResource("Bancos/Bancos Associados.csv");
 
-                        bancoRepository.save(banco);
+        try (BufferedReader reader = new BufferedReader(
+                new InputStreamReader(resource.getInputStream(), StandardCharsets.UTF_8))) {
+
+            String linha;
+            boolean primeiraLinha = true;
+
+            while ((linha = reader.readLine()) != null) {
+                // Pula o cabeçalho
+                if (primeiraLinha) {
+                    primeiraLinha = false;
+                    continue;
+                }
+
+                String[] partes = linha.split(";");
+                if (partes.length < 2) continue;
+
+                String numeroStr = partes[0].trim();
+                String nome = partes[1].trim();
+
+                Integer codigoBanco = null;
+                if (!numeroStr.isEmpty()) {
+                    try {
+                        codigoBanco = Integer.parseInt(numeroStr);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Número inválido para banco: " + numeroStr + " - " + nome);
                     }
                 }
-                System.out.println("Bancos do sistema carregados com sucesso.");
+
+                Banco banco = new Banco();
+                banco.setCodigoBanco(codigoBanco);
+                banco.setNome(nome);
+                banco.setSistema(true); // ou false, dependendo da regra de negócio
+
+                bancoRepository.save(banco);
             }
         }
     }

@@ -40,4 +40,10 @@ public class UsuarioService {
     public void deletar(Long id) {
         usuarioRepository.deleteById(id);
     }
+
+    // ✅ Atualizado para usar nome e senha
+    public Usuario login(String nome, String senha) {
+        Usuario usuario = usuarioRepository.findByNomeAndSenha(nome, senha);
+        return usuario;
+    }
 }

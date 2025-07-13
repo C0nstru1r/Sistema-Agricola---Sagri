@@ -12,8 +12,8 @@ public class Banco {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Column(name = "codigo_banco", nullable = false, unique = true)
+    // Agora pode ser nulo e não é mais unique
+    @Column(name = "codigo_banco", nullable = true, unique = false)
     private Integer codigoBanco;
 
     @NotBlank
