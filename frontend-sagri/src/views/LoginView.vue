@@ -7,7 +7,7 @@
       <form class="formulario-login">
         <input type="text" placeholder="Usuário" class="input" />
         <input type="password" placeholder="Senha" class="input" />
-        <Button type="submit" label="Entrar" icon="pi pi-sign-in" size="small" severity="success" />
+        <Button icon="pi pi-check" aria-label="Filter" severity="success" />
       </form>
     </div>
   </div>
@@ -25,12 +25,14 @@
   background-size: cover;
   background-position: center;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start; /* Agora alinha à esquerda */
+  align-items: top;
+  padding-top: 35px;
+  padding-left: 40px; /* Espaço da borda esquerda */
 }
 
 .login-box {
-  text-align: center;
+  text-align: left;
   color: rgb(4, 3, 85);
 }
 
@@ -49,10 +51,9 @@
 
 .formulario-login {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  width: 250px;
-  align-items: stretch;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
 }
 
 .input {
@@ -62,5 +63,6 @@
   font-size: 14px;
   outline: none;
   background-color: rgba(240, 238, 146, 0.85);
+  width: 250px;
 }
 </style>
