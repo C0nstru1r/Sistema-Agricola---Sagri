@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Data
@@ -18,19 +19,19 @@ public class MovimentacaoFisica {
     private Long id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "produto_id")
+    @JoinColumn(name =produto_id")
     private Produto produto;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "cliente_id")
+    @JoinColumn(name =cliente_id")
     private Pessoa cliente;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name =usuario_id")
     private Pessoa operador;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "plano_conta_id")
+    @JoinColumn(name = plano_conta_id")
     private PlanoConta planoConta;
 
     @ManyToOne(optional = false)
@@ -42,8 +43,7 @@ public class MovimentacaoFisica {
     private HistoricoFinanceiro historico;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "fazenda_id")
-    private Fazenda fazenda;
+    @JoinColumn(name =fazenda_id)   private Fazenda fazenda;
 
     @NotNull
     private LocalDate dataAberturaCaixa;
@@ -51,21 +51,45 @@ public class MovimentacaoFisica {
     @NotNull
     private LocalDate dataMovimentacao;
 
-    @DecimalMin("0.00")
-    private BigDecimal valorDolar;
+    @Column(nullable = false)
+    private LocalTime horaMovimentacao;
 
-    @DecimalMin("0.00")
-    private BigDecimal valorBolsa;
+    @DecimalMin("0private BigDecimal valorDolar;
 
-    @DecimalMin("0.00")
-    private BigDecimal valorDiferencial;
+    @DecimalMin("0private BigDecimal valorBolsa;
 
-    @DecimalMin("0.00")
-    private BigDecimal quantidade;
+    @DecimalMin("0private BigDecimal valorDiferencial;
 
-    @DecimalMin("0.00")
-    private BigDecimal credito;
+    @DecimalMin("0private BigDecimal quantidade;
 
-    @DecimalMin("0.00")
-    private BigDecimal debito;
-}
+    @DecimalMin("0private BigDecimal credito;
+
+    @DecimalMin("0private BigDecimal debito;
+
+    // Novos campos para entrega de armazenamento
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private TipoEntrega tipoEntrega;
+
+    @Size(max = 50)
+    private String numeroContrato; // Número do contrato para abatimento
+
+    @Size(max = 100)
+    private String observacoes;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private StatusEntrega statusEntrega = StatusEntrega.ENTREGUE;
+
+    // Campos para controle de qualidade
+    private String qualidade; // Qualidade do produto entregue
+    private String umidade; // Percentual de umidade
+    private String impurezas; // Percentual de impurezas
+    private String pesoBruto; // Peso bruto
+    private String pesoLiquido; // Peso líquido
+
+    // Campos para rastreamento
+    private String numeroNotaFiscal;
+    private String placaVeiculo;
+    private String motorista;
+} 

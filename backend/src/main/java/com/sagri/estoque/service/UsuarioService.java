@@ -41,9 +41,7 @@ public class UsuarioService {
         usuarioRepository.deleteById(id);
     }
 
-    // ✅ Atualizado para usar nome e senha
-    public Usuario login(String nome, String senha) {
-        Usuario usuario = usuarioRepository.findByNomeAndSenha(nome, senha);
-        return usuario;
+    public Usuario autenticar(String nome, String senha) {
+        return usuarioRepository.findByNomeIgnoreCaseAndSenha(nome, senha).orElse(null);
     }
 }

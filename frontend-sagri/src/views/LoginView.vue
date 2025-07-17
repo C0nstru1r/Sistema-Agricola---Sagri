@@ -4,18 +4,45 @@
       <h1 class="empresa-nome">EMPRESA TESTE LTDA</h1>
       <p class="abertura-caixa">Abertura de Caixa: 08/07/2025</p>
 
-      <form class="formulario-login">
-        <input type="text" placeholder="Usuário" class="input" />
-        <input type="password" placeholder="Senha" class="input" />
-        <Button icon="pi pi-check" aria-label="Filter" severity="success" />
+      <form @submit.prevent="fazerLogin" class="formulario-login">
+        <input v-model="nome" type="text" placeholder="Usuário" class="input" />
+        <input v-model="senha" type="password" placeholder="Senha" class="input" />
+        <Button label="Entrar" icon="pi pi-sign-in" severity="success" />
       </form>
+
+      <p v-if="erro" class="erro">{{ erro }}</p>
     </div>
   </div>
 </template>
 
 <script setup>
-// Se o componente Button foi registrado globalmente em main.ts,
-// não é necessário importar aqui.
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import Button from 'primevue/button'
+import axios from 'axios'
+
+const router = useRouter()
+const nome = ref('')
+const senha = ref('')
+const erro = ref('')
+
+const fazerLogin = async () => {
+  try {
+    const response = await axios.post('http://localhost:8080/api/login', {
+      nome: nome.value,
+      senha: senha.value
+    })
+
+    if (response.data.success) {
+      localStorage.setItem('usuario', JSON.stringify(response.data.usuario))
+      router.push('/principal')
+    } else {
+      erro.value = response.data.message
+    }
+  } catch (e) {
+    erro.value = 'Erro ao conectar com o servidor.'
+  }
+}
 </script>
 
 <style scoped>
@@ -25,10 +52,10 @@
   background-size: cover;
   background-position: center;
   display: flex;
-  justify-content: flex-start; /* Agora alinha à esquerda */
+  justify-content: flex-start;
   align-items: top;
   padding-top: 35px;
-  padding-left: 40px; /* Espaço da borda esquerda */
+  padding-left: 40px;
 }
 
 .login-box {
@@ -64,5 +91,10 @@
   outline: none;
   background-color: rgba(240, 238, 146, 0.85);
   width: 250px;
+}
+
+.erro {
+  color: red;
+  margin-top: 10px;
 }
 </style>

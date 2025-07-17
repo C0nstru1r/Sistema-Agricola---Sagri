@@ -1,5 +1,6 @@
 package com.sagri.estoque.service;
 
+import com.sagri.estoque.dto.EmpresaDTO;
 import com.sagri.estoque.model.Empresa;
 import com.sagri.estoque.repository.EmpresaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,28 +14,35 @@ public class EmpresaService {
     @Autowired
     private EmpresaRepository empresaRepository;
 
-    public Empresa saveEmpresa(Empresa empresa) {
-        return empresaRepository.save(empresa);
-    }
-
     public Empresa getEmpresa(Long id) {
-        Optional<Empresa> optional = empresaRepository.findById(id);
-        return optional.orElse(null);
+        return empresaRepository.findById(id).orElse(null);
     }
 
-    public Empresa updateEmpresa(Long id, Empresa empresaAtualizada) {
-        Empresa existente = getEmpresa(id);
-        if (existente != null) {
-            existente.setNome(empresaAtualizada.getNome());
-            existente.setCnpj(empresaAtualizada.getCnpj());
-            existente.setEmail(empresaAtualizada.getEmail());
-            existente.setTelefone(empresaAtualizada.getTelefone());
-            return empresaRepository.save(existente);
+    public Empresa updateEmpresa(Long id, EmpresaDTO dto) {
+        Optional<Empresa> empresaOpt = empresaRepository.findById(id);
+        if (empresaOpt.isPresent()) {
+            Empresa empresa = empresaOpt.get();
+
+            // Atualiza apenas os campos permitidos
+            empresa.setEndereco(dto.getEndereco());
+            empresa.setNumero(dto.getNumero());
+            empresa.setComplemento(dto.getComplemento());
+            empresa.setBairro(dto.getBairro());
+            empresa.setCidade(dto.getCidade());
+            empresa.setEstado(dto.getEstado());
+            empresa.setCep(dto.getCep());
+            empresa.setTelefone(dto.getTelefone());
+            empresa.setEmail(dto.getEmail());
+            empresa.setReferencia(dto.getReferencia());
+            empresa.setLocalizacao(dto.getLocalizacao());
+
+            return empresaRepository.save(empresa);
         }
         return null;
     }
 
-    public void deleteEmpresa(Long id) {
-        empresaRepository.deleteById(id);
+    // ✅ Adicionado: permite criar empresa
+    public Empresa salvar(Empresa empresa) {
+        return empresaRepository.save(empresa);
     }
 }

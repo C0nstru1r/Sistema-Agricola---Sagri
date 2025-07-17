@@ -42,6 +42,7 @@ D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\estoque\model\Movi
 D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\estoque\service\MovimentacaoFisicaService.java
 D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\estoque\repository\MovimentacaoFinanceiraRepository.java
 D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\estoque\service\CategoriaProdutoService.java
+D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\licenca\config\WebConfig.java
 D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\estoque\controller\PrecoController.java
 D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\estoque\controller\MovimentacaoFisicaController.java
 D:\Sistema Agricola\Sagri_2.0\backend\src\main\java\com\sagri\estoque\model\FormaPagamento.java

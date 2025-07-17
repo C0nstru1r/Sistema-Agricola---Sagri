@@ -1,48 +1,31 @@
 package com.sagri.estoque.controller;
 
 import com.sagri.estoque.model.Usuario;
-import com.sagri.estoque.repository.UsuarioRepository;
-import jakarta.servlet.http.HttpSession;
+import com.sagri.estoque.usuario.LoginRequest;
+import com.sagri.estoque.response.LoginResponse;
+import com.sagri.estoque.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
+@RequestMapping("/api/login")
+@CrossOrigin(origins = "*") // Habilita requisições do frontend (localhost:5173)
 public class LoginController {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private LoginService loginService;
 
-    @GetMapping("/login")
-    public String mostrarFormularioLogin() {
-        return "login"; // Vai buscar login.html em src/main/resources/templates
-    }
+    @PostMapping
+    public LoginResponse login(@RequestBody LoginRequest request) {
+        String nome = request.getNome();
+        String senha = request.getSenha();
 
-    @PostMapping("/login")
-    public String processarLogin(@RequestParam("nome") String nome,
-                                 @RequestParam("senha") String senha,
-                                 HttpSession session,
-                                 Model model) {
-
-        Usuario usuario = usuarioRepository.findByNomeAndSenha(nome, senha);
+        Usuario usuario = loginService.autenticar(nome, senha);
 
         if (usuario != null) {
-            session.setAttribute("usuarioLogado", usuario);
-            return "redirect:/home";
+            return new LoginResponse(true, "Login efetuado com sucesso", usuario);
         } else {
-            model.addAttribute("erro", "Nome ou senha inválidos.");
-            return "login";
+            return new LoginResponse(false, "Usuário ou senha inválidos", null);
         }
-    }
-
-    @GetMapping("/home")
-    public String home() {
-        return "home"; // Vai buscar home.html
-    }
-
-    @GetMapping("/")
-    public String redirecionarParaLogin() {
-        return "redirect:/login";
     }
 }
